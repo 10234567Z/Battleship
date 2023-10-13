@@ -20,23 +20,25 @@ export default function GameBoard() {
     let horizontalPlace = (shipLength, row, col) => {
         let tempBackTrack;
         for (let i = 0; i < shipLength; i++) {
-            if(board[row][col + i] === 0){
+            if (board[row][col + i] === 0) {
                 board[row][col + i] = 1;
             }
-            else{
+            else {
                 tempBackTrack = i - 1;
-                backTrackHorizontal(tempBackTrack , row , col);
+                backTrackHorizontal(tempBackTrack, row, col);
                 break;
             }
         }
     }
 
     let PlaceShip = (row, col, ship, vertical = true) => {
-        if (vertical && board[row + ship.ships.length] !== undefined) {
-            verticalPlace(ship.ships.length, row, col)
-        }
-        else if (!vertical && board[row][col + ship.ships.length] !== undefined) {
-            horizontalPlace(ship.ships.length, row, col)
+        if ( board[row] !== undefined && board[row][col] !== undefined) {
+            if (vertical && board[row + ship.ships.length] !== undefined) {
+                verticalPlace(ship.ships.length, row, col)
+            }
+            else if (!vertical && board[row][col + ship.ships.length] !== undefined) {
+                horizontalPlace(ship.ships.length, row, col)
+            }
         }
     }
 
