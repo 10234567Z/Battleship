@@ -1,8 +1,11 @@
 export default function GameBoard() {
     let board = new Array(10).fill(0).map(() => new Array(10).fill(0));
 
+    /** public function to return board */
     let getBoard = () => board;
 
+
+    /** Place ship vertically on board , and call backtracking if ship already exists on the path */
     let verticalPlace = (shipLength, row, col) => {
         let tempBackTrack;
         for (let i = 0; i < shipLength; i++) {
@@ -17,6 +20,7 @@ export default function GameBoard() {
         }
     }
 
+    /** Place ship horizontally on board , and call backtracking if ship already exists on the path */
     let horizontalPlace = (shipLength, row, col) => {
         let tempBackTrack;
         for (let i = 0; i < shipLength; i++) {
@@ -31,6 +35,7 @@ export default function GameBoard() {
         }
     }
 
+    /** Checks if the position is valid or not and then based on vertical parameter value , call the suitable function to place it */
     let PlaceShip = (row, col, ship, vertical = true) => {
         if ( board[row] !== undefined && board[row][col] !== undefined) {
             if (vertical && board[row + ship.ships.length] !== undefined) {
@@ -42,6 +47,10 @@ export default function GameBoard() {
         }
     }
 
+    /**
+     * both of the backTrack down here , takes the index value from where afterward another ship was there then start backtracking
+     * until index is 0 and board is reset to what its previous state was
+     */
     let backTrackVertical = (index, row, col) => {
         for (let i = index; i >= 0; i--) {
             board[row + i][col] = 0;
