@@ -7,13 +7,16 @@ export default function GameBoard() {
     let shipsBoarded = [];
 
     /** Place ship vertically on board , and call backtracking if ship already exists on the path */
-    let verticalPlace = (shipLength, row, col) => {
+    let verticalPlace = (shipLength, row, col , ship) => {
         let tempBackTrack;
         let ending = 0;
+        let coords = [];
         for (let i = 0; i < shipLength; i++) {
             if (board[row + i][col] === 0) {
                 board[row + i][col] = 1;
                 ending++
+                coords.push([row + i , col])
+
             }
             else {
                 tempBackTrack = i - 1;
@@ -21,19 +24,21 @@ export default function GameBoard() {
                 break;
             }
         }
-        if(ending === shipLength){
-            shipsBoarded.push({ship: `${shipLength}SHIP` , start: [row,col] , end: [row + (ending - 1) , col]})
+        if(ending === shipLength && coords.length === shipLength){
+            shipsBoarded.push({ship: ship.ships , coordinates: coords})
         }
     }
 
     /** Place ship horizontally on board , and call backtracking if ship already exists on the path */
-    let horizontalPlace = (shipLength, row, col) => {
+    let horizontalPlace = (shipLength, row, col , ship) => {
         let tempBackTrack;
         let ending = 0;
+        let coords = []
         for (let i = 0; i < shipLength; i++) {
             if (board[row][col + i] === 0) {
                 board[row][col + i] = 1;
                 ending++
+                coords.push([row,col + i])
             }
             else {
                 tempBackTrack = i - 1;
@@ -41,8 +46,8 @@ export default function GameBoard() {
                 break;
             }
         }
-        if(ending === shipLength){
-            shipsBoarded.push({ship: `${shipLength}SHIP` , start: [row,col] , end: [row , col + (ending - 1)]})
+        if(ending === shipLength && coords.length === shipLength){
+            shipsBoarded.push({ship: ship.ships , coordinates: coords})
         }
     }
 
@@ -50,10 +55,10 @@ export default function GameBoard() {
     let PlaceShip = (row, col, ship, vertical = true) => {
         if ( board[row] !== undefined && board[row][col] !== undefined) {
             if (vertical && board[row + ship.ships.length] !== undefined) {
-                verticalPlace(ship.ships.length, row, col)
+                verticalPlace(ship.ships.length, row, col , ship)
             }
             else if (!vertical && board[row][col + ship.ships.length] !== undefined) {
-                horizontalPlace(ship.ships.length, row, col)
+                horizontalPlace(ship.ships.length, row, col , ship)
             }
         }
     }
@@ -75,9 +80,18 @@ export default function GameBoard() {
     }
 
 
-    let receievAttack = (row , col) => {
-
+    let recieveAttack = (row , col) => {
+        if(board[row] !== undefined && board[row][col] !== undefined && board[row][col] !== 'hit'){
+            if(board[row][col] === 1){
+                board[row][col] = 'hit';
+                let hitShip = shipsBoarded.filter((ship) => ship.coordinates.some(coord => coord[0] === row && coord[1] === col));
+                hitShip[0].ship.hit();
+                hitShip[0].ship.isSunk();
+            }
+            else if(board[row][col] === 0){
+                board[row][col] = 'miss'
+            }
+        }
     }
-
-    return { PlaceShip, getBoard ,shipsBoarded}
+    return { PlaceShip, getBoard , recieveAttack}
 }
