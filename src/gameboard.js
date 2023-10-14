@@ -7,7 +7,7 @@ export default function GameBoard() {
     let shipsBoarded = [];
 
     /** Place ship vertically on board , and call backtracking if ship already exists on the path */
-    let verticalPlace = (shipLength, row, col , ship) => {
+    let verticalPlace = (shipLength, row, col, ship) => {
         let tempBackTrack;
         let ending = 0;
         let coords = [];
@@ -15,7 +15,7 @@ export default function GameBoard() {
             if (board[row + i][col] === 0) {
                 board[row + i][col] = 1;
                 ending++
-                coords.push([row + i , col])
+                coords.push([row + i, col])
 
             }
             else {
@@ -24,13 +24,13 @@ export default function GameBoard() {
                 break;
             }
         }
-        if(ending === shipLength && coords.length === shipLength){
-            shipsBoarded.push({ship: ship.ships , coordinates: coords})
+        if (ending === shipLength && coords.length === shipLength) {
+            shipsBoarded.push({ ship: ship.ships, coordinates: coords })
         }
     }
 
     /** Place ship horizontally on board , and call backtracking if ship already exists on the path */
-    let horizontalPlace = (shipLength, row, col , ship) => {
+    let horizontalPlace = (shipLength, row, col, ship) => {
         let tempBackTrack;
         let ending = 0;
         let coords = []
@@ -38,7 +38,7 @@ export default function GameBoard() {
             if (board[row][col + i] === 0) {
                 board[row][col + i] = 1;
                 ending++
-                coords.push([row,col + i])
+                coords.push([row, col + i])
             }
             else {
                 tempBackTrack = i - 1;
@@ -46,19 +46,19 @@ export default function GameBoard() {
                 break;
             }
         }
-        if(ending === shipLength && coords.length === shipLength){
-            shipsBoarded.push({ship: ship.ships , coordinates: coords})
+        if (ending === shipLength && coords.length === shipLength) {
+            shipsBoarded.push({ ship: ship.ships, coordinates: coords })
         }
     }
 
     /** Checks if the position is valid or not and then based on vertical parameter value , call the suitable function to place it */
     let PlaceShip = (row, col, ship, vertical = true) => {
-        if ( board[row] !== undefined && board[row][col] !== undefined) {
+        if (board[row] !== undefined && board[row][col] !== undefined) {
             if (vertical && board[row + ship.ships.length] !== undefined) {
-                verticalPlace(ship.ships.length, row, col , ship)
+                verticalPlace(ship.ships.length, row, col, ship)
             }
             else if (!vertical && board[row][col + ship.ships.length] !== undefined) {
-                horizontalPlace(ship.ships.length, row, col , ship)
+                horizontalPlace(ship.ships.length, row, col, ship)
             }
         }
     }
@@ -80,18 +80,40 @@ export default function GameBoard() {
     }
 
 
-    let recieveAttack = (row , col) => {
-        if(board[row] !== undefined && board[row][col] !== undefined && board[row][col] !== 'hit'){
-            if(board[row][col] === 1){
+    let recieveAttack = (row, col) => {
+
+        /** Check if its a valid coordinate to hit and not being hit before */
+        if (board[row] !== undefined && board[row][col] !== undefined && board[row][col] !== 'hit') {
+            if (board[row][col] === 1) {
                 board[row][col] = 'hit';
                 let hitShip = shipsBoarded.filter((ship) => ship.coordinates.some(coord => coord[0] === row && coord[1] === col));
+                console.log(hitShip[0])
                 hitShip[0].ship.hit();
                 hitShip[0].ship.isSunk();
+                updateGame(hitShip[0].ship);
             }
-            else if(board[row][col] === 0){
+            else if (board[row][col] === 0) {
                 board[row][col] = 'miss'
             }
         }
+        return endGame()
     }
-    return { PlaceShip, getBoard , recieveAttack}
+
+    /** Update the boarded ships */
+    let updateGame = (ship) => {
+        if (ship.sunk) {
+            let index = shipsBoarded.findIndex((s) => (console.log(s.ship), ship === s.ship))
+            shipsBoarded.splice(index, 1);
+        }
+    }
+
+    /** End game if gameboard's all boarded ships are down */
+    let endGame = () => {
+        if (shipsBoarded.length === 0) {
+            return "Game has ended as all ships are down"
+        }
+
+        return "Still ongoing"
+    }
+    return { PlaceShip, getBoard, recieveAttack }
 }
