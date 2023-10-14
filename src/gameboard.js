@@ -4,13 +4,16 @@ export default function GameBoard() {
     /** public function to return board */
     let getBoard = () => board;
 
+    let shipsBoarded = [];
 
     /** Place ship vertically on board , and call backtracking if ship already exists on the path */
     let verticalPlace = (shipLength, row, col) => {
         let tempBackTrack;
+        let ending = 0;
         for (let i = 0; i < shipLength; i++) {
             if (board[row + i][col] === 0) {
                 board[row + i][col] = 1;
+                ending++
             }
             else {
                 tempBackTrack = i - 1;
@@ -18,20 +21,28 @@ export default function GameBoard() {
                 break;
             }
         }
+        if(ending === shipLength){
+            shipsBoarded.push({ship: `${shipLength}SHIP` , start: [row,col] , end: [row + (ending - 1) , col]})
+        }
     }
 
     /** Place ship horizontally on board , and call backtracking if ship already exists on the path */
     let horizontalPlace = (shipLength, row, col) => {
         let tempBackTrack;
+        let ending = 0;
         for (let i = 0; i < shipLength; i++) {
             if (board[row][col + i] === 0) {
                 board[row][col + i] = 1;
+                ending++
             }
             else {
                 tempBackTrack = i - 1;
                 backTrackHorizontal(tempBackTrack, row, col);
                 break;
             }
+        }
+        if(ending === shipLength){
+            shipsBoarded.push({ship: `${shipLength}SHIP` , start: [row,col] , end: [row , col + (ending - 1)]})
         }
     }
 
@@ -63,5 +74,10 @@ export default function GameBoard() {
         }
     }
 
-    return { PlaceShip, getBoard }
+
+    let receievAttack = (row , col) => {
+
+    }
+
+    return { PlaceShip, getBoard ,shipsBoarded}
 }
