@@ -87,7 +87,6 @@ export default function GameBoard() {
             if (board[row][col] === 1) {
                 board[row][col] = 'hit';
                 let hitShip = shipsBoarded.filter((ship) => ship.coordinates.some(coord => coord[0] === row && coord[1] === col));
-                console.log(hitShip[0])
                 hitShip[0].ship.hit();
                 hitShip[0].ship.isSunk();
                 updateGame(hitShip[0].ship);
@@ -102,7 +101,7 @@ export default function GameBoard() {
     /** Update the boarded ships */
     let updateGame = (ship) => {
         if (ship.sunk) {
-            let index = shipsBoarded.findIndex((s) => (console.log(s.ship), ship === s.ship))
+            let index = shipsBoarded.findIndex((s) => ship === s.ship)
             shipsBoarded.splice(index, 1);
         }
     }
@@ -115,5 +114,5 @@ export default function GameBoard() {
 
         return "Still ongoing"
     }
-    return { PlaceShip, getBoard, recieveAttack }
+    return { PlaceShip, getBoard, recieveAttack, shipsBoarded }
 }
