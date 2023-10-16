@@ -5,7 +5,7 @@ const { cache } = require('webpack');
 
 module.exports = {
   mode: 'development',
-  entry: './src/battleship.js',
+  entry: './src/gameStart.js',
   devtool: 'inline-source-map',
   module: {
     rules: [
