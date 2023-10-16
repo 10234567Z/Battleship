@@ -1,5 +1,4 @@
 const path = require('path');
-const ESLintPlugin = require('eslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { cache } = require('webpack');
 
@@ -11,7 +10,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: ['node_modules'],
+        exclude: path.resolve(__dirname , 'node_modules'),
         use: ['babel-loader'],
       },
       {
@@ -43,9 +42,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ESLintPlugin({
-      fix: true,
-    }),
     new HtmlWebpackPlugin({
       title: 'Battleship',
       favicon: './src/Content/ferry.ico',
