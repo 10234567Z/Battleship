@@ -51,6 +51,23 @@ export default function Player(playerName, isAI = true) {
         }
     }
 
+    let random = () => {
+        while (gameBoardFact.shipsBoarded.length < 5) {
+            let ship = new Ship(gameBoardFact.shipsBoarded.length + 1);
+            let vertical = Math.random() < 0.5;
+            let isValidSpot = false;
+
+            while (!isValidSpot) {
+                let row = Math.floor(Math.random() * 10);
+                let col = Math.floor(Math.random() * 10);
+                if (board[row][col] === 0) {
+                    gameBoardFact.PlaceShip(row, col, ship, vertical);
+                    isValidSpot = true;
+                }
+            }
+        }
+    }
+
     let attack = (row, col, enemyBoard) => {
         if (enemyBoard.shipsBoarded.length === 5) {
             enemyBoard.recieveAttack(row, col);
@@ -60,5 +77,5 @@ export default function Player(playerName, isAI = true) {
             return "Place all the ships on your board before starting the attack"
         }
     }
-    return { boardShip, aiBoardShip, attack, aiAttack, name, board, gameBoardFact }
+    return { boardShip, aiBoardShip, attack, aiAttack,random, name, board, gameBoardFact }
 } 
