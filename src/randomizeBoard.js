@@ -7,6 +7,5 @@ export default function Randomize(name){
 
     let computer = new Player('Computer' , true);
     computer.aiBoardShip();
-
     gameStart(human , computer)
 }

@@ -1,3 +1,5 @@
+import attackOther from "./attack";
+
 var startScreen = "" +
     "  <div class=\"container\">" +
     "    <header class=\"fixedHead\">" +
@@ -15,6 +17,7 @@ var startScreen = "" +
     "";
 
 export default function gameStart(human, computer) {
+    
     document.querySelector("body").innerHTML = startScreen;
 
     /** Make Grid */
@@ -39,4 +42,10 @@ export default function gameStart(human, computer) {
     for (let i = 0; i < 15; i++) {
         humanB.querySelector(`.cell${shipCoords[i][0]}${shipCoords[i][1]}`).style.backgroundColor = "red";
     }
+
+    document.querySelector(".AIB").childNodes.forEach((cell) => {
+        cell.addEventListener('click' , e => {
+            attackOther(human , computer , cell);
+        })
+    })
 }

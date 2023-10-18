@@ -1,3 +1,5 @@
+import makeUI from "./gameStart";
+
 export default function GameBoard() {
     let board = new Array(10).fill(0).map(() => new Array(10).fill(0));
 
@@ -109,7 +111,11 @@ export default function GameBoard() {
     /** End game if gameboard's all boarded ships are down */
     let endGame = () => {
         if (shipsBoarded.length === 0) {
-            return "Game has ended as all ships are down"
+            document.querySelector('.container').innerHTML = "<div class=\"playAgain\">Play Again</div>";
+
+            document.querySelector('.playAgain').addEventListener('click' , () => {
+                makeUI();
+            })
         }
 
         return "Still ongoing"

@@ -49,27 +49,26 @@ export default function makeUI() {
             currentShip.append(part);
         }
     }
+
+    /** Name Validation */
+    document.querySelector('input').addEventListener('blur', e => {
+        if (e.target.value.trim() === '') {
+            document.querySelector('.error').innerHTML = "No empty names allowed!"
+            document.querySelector('.error').style.boxShadow = "-1px 1px 15px 7px rgba(255,0,0,0.09)"
+            e.target.style.borderColor = "red"
+        }
+        else {
+            document.querySelector('.error').innerHTML = "";
+            document.querySelector('.error').style.boxShadow = "none"
+            e.target.style.borderColor = "black"
+        }
+    })
+
+    /** Randomize placement */
+    document.querySelector('.random').addEventListener('click', e => {
+        if (document.querySelector('input').value.trim() !== '') {
+            Randomize(document.querySelector('input').value.trim());
+        }
+    })
 }
 makeUI()
-
-
-/** Name Validation */
-document.querySelector('input').addEventListener('blur', e => {
-    if (e.target.value.trim() === '') {
-        document.querySelector('.error').innerHTML = "No empty names allowed!"
-        document.querySelector('.error').style.boxShadow = "-1px 1px 15px 7px rgba(255,0,0,0.53)"
-        e.target.style.borderColor = "red"
-    }
-    else {
-        document.querySelector('.error').innerHTML = "";
-        document.querySelector('.error').style.boxShadow = "none"
-        e.target.style.borderColor = "black"
-    }
-})
-
-/** Randomize placement */
-document.querySelector('.random').addEventListener('click', e => {
-    if (document.querySelector('input').value.trim() !== '') {
-        Randomize(document.querySelector('input').value.trim());
-    }
-})
