@@ -82,7 +82,7 @@ export default function GameBoard() {
     }
 
 
-    let recieveAttack = (row, col) => {
+    let recieveAttack = (row, col , enemyBoard) => {
 
         /** Check if its a valid coordinate to hit and not being hit before */
         if (board[row] !== undefined && board[row][col] !== undefined && board[row][col] !== 'hit') {
@@ -97,7 +97,7 @@ export default function GameBoard() {
                 board[row][col] = 'miss'
             }
         }
-        return endGame()
+        return endGame(enemyBoard)
     }
 
     /** Update the boarded ships */
@@ -109,10 +109,16 @@ export default function GameBoard() {
     }
 
     /** End game if gameboard's all boarded ships are down */
-    let endGame = () => {
+    let endGame = (enemyBoard) => {
         if (shipsBoarded.length === 0) {
-            document.querySelector('.container').innerHTML = "<div class=\"playAgain\">Play Again</div>";
-
+            let name = "You"
+            if(enemyBoard.name !== "Computer"){
+                name = "Computer"
+            }
+            document.querySelector('.container').innerHTML = `
+            The winner is ${name} against ${enemyBoard.name}
+            <div class=\"playAgain\">Play Again</div>
+            `;
             document.querySelector('.playAgain').addEventListener('click' , () => {
                 makeUI();
             })

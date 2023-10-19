@@ -33,18 +33,16 @@ export default function Player(playerName, isAI = true) {
 
     let aiAttack = (enemyBoard) => {
         if (isAI) {
-            if (enemyBoard.shipsBoarded.length <= 5 && enemyBoard.shipsBoarded.length > 0 ) {
-                let eBoard = enemyBoard.getBoard();
+            if (enemyBoard.gameBoardFact.shipsBoarded.length <= 5 && enemyBoard.gameBoardFact.shipsBoarded.length > 0 ) {
+                let eBoard = enemyBoard.gameBoardFact.getBoard();
                 let isValidSpot = false;
 
                 while (!isValidSpot) {
                     let row = Math.floor(Math.random() * 10)
                     let col = Math.floor(Math.random() * 10)
                     if (eBoard[row][col] == 0 || eBoard[row][col] == 1) {
-                        console.log([row , col])
-                        console.log(eBoard[row][col])
                         isValidSpot = true;
-                        enemyBoard.recieveAttack(row, col);
+                        enemyBoard.gameBoardFact.recieveAttack(row, col , enemyBoard);
                     }
                 }
             }
@@ -69,8 +67,8 @@ export default function Player(playerName, isAI = true) {
     }
 
     let attack = (row, col, enemyBoard) => {
-        if (enemyBoard.shipsBoarded.length <= 5 && enemyBoard.shipsBoarded.length > 0 ) {
-            enemyBoard.recieveAttack(row, col);
+        if (enemyBoard.gameBoardFact.shipsBoarded.length <= 5 && enemyBoard.gameBoardFact.shipsBoarded.length > 0 ) {
+            enemyBoard.gameBoardFact.recieveAttack(row, col , enemyBoard);
             return "All good on western front"
         }
         else {
