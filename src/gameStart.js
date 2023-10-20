@@ -11,11 +11,14 @@ var startScreen = "" +
     "      <h1>Battle Ship</h1>" +
     "      <p>Where the real one fights</p>" +
     "    </header>" +
+    "        <div class=\"board\"></div>" +
     "    <main>" +
-    "      <div class=\"board\"></div>" +
-    "      <p class=\"inputHead\">Type your Name</p> <br>" +
-    "      <input type=\"text\" maxlength=\"12\" minlength=\"1\">" +
-    "      <p class=\"error\"></p>" +
+    "      <div class=\"control\">" +
+    "      <div class=\"nameControl\">" +
+    "        <p class=\"inputHead\">Type your Name</p> <br>" +
+    "        <input type=\"text\" maxlength=\"12\" minlength=\"1\">" +
+    "        <p class=\"error\"></p>" +
+    "      </div>" +
     "      <div class=\"moves\">" +
     "           <p>Hold the ship from first tile and drag it</p>" +
     "           <div class=\"ship s5\"  draggable=true ></div>" +
@@ -27,8 +30,9 @@ var startScreen = "" +
     "           <h3>OR</h3>" +
     "       <div class=\"random\">Randomize</div>" +
     "       <div class=\"reset\">Reset</div>" +
+    "      <div> " +
     "    </main>" +
-    "    <footer>&copy; Fudo</footer>" +
+    "    <footer><a href=\"https://github.com/10234567Z\"><strong>&copy; Fudo</strong></a></footer>" +
     "  </div>" +
     "";
 
@@ -76,6 +80,11 @@ export default function makeUI() {
         if (document.querySelector('input').value.trim() !== '') {
             Randomize(document.querySelector('input').value.trim());
             localStorage.clear()
+        }
+        else{
+            document.querySelector('.error').innerHTML = "No empty names allowed!"
+            document.querySelector('.error').style.boxShadow = "-1px 1px 15px 7px rgba(255,0,0,0.09)"
+            document.querySelector('input').style.borderColor= "red"
         }
     })
 
@@ -232,6 +241,11 @@ export default function makeUI() {
                         computer.aiBoardShip();
                         localStorage.clear();
                         gameStart(human , computer)
+                    }
+                    else{
+                        document.querySelector('.error').innerHTML = "No empty names allowed!"
+                        document.querySelector('.error').style.boxShadow = "-1px 1px 15px 7px rgba(255,0,0,0.09)"
+                        document.querySelector('input').style.borderColor = "red"
                     }
                 })
             }

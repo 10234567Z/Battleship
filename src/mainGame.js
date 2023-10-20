@@ -6,13 +6,11 @@ var startScreen = "" +
     "      <h1>Battle Ship</h1>" +
     "      <p>Where the real one fights</p>" +
     "    </header>" +
-    "    <main>" +
     "      <p>You</p>" +
     "      <div class=\"humanB board\"></div>" +
     "      <p>Opponent</p>" +
     "      <div class=\"AIB board\"></div>" +
-    "    </main>" +
-    "    <footer>&copy; Fudo</footer>" +
+    "    <footer><a href=\"https://github.com/10234567Z\"><strong>&copy; Fudo</strong></a></footer>" +
     "  </div>" +
     "";
 
@@ -26,6 +24,7 @@ export default function gameStart(human, computer) {
             document.querySelectorAll('.board').forEach((board) => {
                 let cell = document.createElement('div');
                 cell.classList.add(`cell`, `cell${i}${j}`);
+                cell.setAttribute("style", "background-color: white;")
                 board.append(cell)
             })
         }
