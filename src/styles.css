@@ -12,23 +12,28 @@
     font-family: "normalF";
     src: url(./Content/PlaypenSans-ExtraLight.ttf);
 }
+
 @keyframes header {
-    0%{
+    0% {
         transform: translateY(-290px);
         opacity: 0;
     }
-    25%{
+
+    25% {
         transform: translateY(-217.5px);
         opacity: 0.25;
     }
-    50%{
+
+    50% {
         transform: translateY(-145px);
         opacity: 0.5;
     }
-    75%{
+
+    75% {
         transform: translateY(-70px);
     }
-    100%{
+
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
@@ -36,26 +41,29 @@
 
 
 @keyframes grid {
-    0%{
+    0% {
         transform: translateX(-50px);
         opacity: 0;
     }
-    100%{
+
+    100% {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
 @keyframes main {
-    0%{
+    0% {
         transform: translateY(-50px);
         opacity: 0;
     }
-    100%{
+
+    100% {
         transform: translateY(0);
         opacity: 1;
     }
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -72,18 +80,22 @@
     width: 100vw;
     display: grid;
     grid-template-rows: fit-content(15%) fit-content(50%) fit-content(20%) auto;
+    place-items: center;
     justify-content: center;
+    align-items: center;
     gap: 20px;
     background-color: rgba(225, 43, 137, 0.21);
 }
-h1{
+
+h1 {
     font-size: 40px;
     animation: header 800ms ease 0s 1 normal forwards;
 }
 
-h1 > p {
+h1>p {
     animation: header 800ms ease 0s 1 normal forwards;
 }
+
 header {
     animation: header 800ms ease 0s 1 normal forwards;
     display: flex;
@@ -95,8 +107,9 @@ header {
     border-top: none;
     border-radius: 8px;
     font-family: "normalF";
-    background-color:rgba(92, 59, 197, 0.22) ;
+    background-color: rgba(92, 59, 197, 0.22);
     max-height: 290px;
+    width: 100%;
 }
 
 main {
@@ -178,7 +191,8 @@ footer {
     animation: main 800ms ease 0s 1 normal forwards;
 }
 
-.random , .reset {
+.random,
+.reset {
     width: 100px;
     text-align: center;
     color: rgb(255, 255, 255);
@@ -195,15 +209,18 @@ footer {
     display: inline-block;
     transition: all 0.2s linear;
 }
-.random{
+
+.random {
     margin-bottom: 10px;
 }
 
-.random:hover , .reset:hover {
+.random:hover,
+.reset:hover {
     background: #5D5D5D;
 }
 
-.random:active , .reset:active {
+.random:active,
+.reset:active {
     background: #373737;
 }
 
@@ -239,7 +256,8 @@ input {
     background-color: rgba(0, 0, 0, 0.2)
 }
 
-.playAgain , .confirm {
+.playAgain,
+.confirm {
     color: rgb(255, 255, 255);
     font-size: 23px;
     line-height: 23px;
@@ -257,68 +275,89 @@ input {
     text-align: center;
 }
 
-.playAgain:hover , .confirm:hover {
+.playAgain:hover,
+.confirm:hover {
     background: #A41010;
 }
 
-.playAgain:active , .confirm:active {
+.playAgain:active,
+.confirm:active {
     background: #750000;
 }
 
-.confirm{
+.confirm {
     height: 50px;
 }
 
-a{
+a {
     color: red;
     font-weight: bolder;
 }
 
-header + p, .humanB + p {
+header+p,
+.humanB+p {
     font-size: xx-large;
 }
 
+.announcement {
+    grid-area: 2/1/3/3;
+}
+
+.playAgain {
+    max-width: 200px;
+    grid-area: 3/1/4/3;
+    align-self: flex-start;
+}
+
 @media screen and (min-width:936px) {
-    .container{
+    .container {
         grid-template-columns: 50% 50%;
         grid-template-rows: fit-content(290px) auto;
         place-items: center;
     }
 
-    header{
+    header {
         grid-area: 1/1/2/3;
-        width: 100%;
     }
 
-    .humanB{
+    .humanB {
         grid-area: 2/1/3/2;
         margin: 0;
     }
-    .AIB{
+
+    .AIB {
         grid-area: 2/2/3/3;
     }
-    header + p, .humanB + p {
+
+    header+p,
+    .humanB+p {
         position: relative;
         font-size: xx-large;
         align-self: start;
-        padding:6px;
+        padding: 6px;
     }
-    
-    .humanB{
+
+    .humanB {
         justify-self: flex-end;
     }
-    
-    .AIB{
+
+    .AIB {
         justify-self: flex-start;
     }
-    
-    .humanB + p{
+
+    .humanB+p {
         justify-self: flex-start;
         margin-left: 45px;
     }
-    
-    header + p{
+
+    header+p {
         justify-self: flex-end;
         margin-right: 45px;
-    }    
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .announcement {
+        font-size: 20px;
+    }
 }
