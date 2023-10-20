@@ -20,7 +20,7 @@ var startScreen = "" +
     "        <p class=\"error\"></p>" +
     "      </div>" +
     "      <div class=\"moves\">" +
-    "           <p>Hold the ship from first tile and drag it</p>" +
+    "           <p>Hold the ship from first tile and drag it (only for pc users)</p>" +
     "           <div class=\"ship s5\"  draggable=true ></div>" +
     "           <div class=\"ship s4\"  draggable=true ></div>" +
     "           <div class=\"ship s3\"  draggable=true ></div>" +
@@ -38,6 +38,7 @@ var startScreen = "" +
 
 
 export default function makeUI() {
+    localStorage.clear()
     let startCoords = []
     document.querySelector("body").innerHTML = startScreen;
 

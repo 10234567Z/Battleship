@@ -69,7 +69,6 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    touch-action: none;
     font-family: "normalF";
     font-size: 14px;
 }
@@ -122,6 +121,15 @@ main {
     align-items: center;
 }
 
+.control{
+    justify-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .board {
     width: 290px;
     height: 290px;
@@ -146,6 +154,7 @@ main {
     text-align: center;
     padding-top: 10px;
     border-top: 1px ridge black;
+    padding: 5px;
 }
 
 .moves>div:not(.confirm) {
@@ -157,6 +166,7 @@ main {
     transition: all 0.4s linear;
     -webkit-user-drag: element;
     height: 29px;
+    position: relative;
 }
 
 .s5 {
@@ -287,6 +297,8 @@ input {
 
 .confirm {
     height: 50px;
+    animation: grid 800ms ease 0s 1 normal forwards;
+
 }
 
 a {
