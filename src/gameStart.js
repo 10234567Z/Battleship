@@ -75,6 +75,7 @@ export default function makeUI() {
     document.querySelector('.random').addEventListener('click', e => {
         if (document.querySelector('input').value.trim() !== '') {
             Randomize(document.querySelector('input').value.trim());
+            localStorage.clear()
         }
     })
 
@@ -229,6 +230,7 @@ export default function makeUI() {
                         }
                         let computer = new Player('Computer', true);
                         computer.aiBoardShip();
+                        localStorage.clear();
                         gameStart(human , computer)
                     }
                 })
