@@ -3,7 +3,8 @@
   "scripts": {
     "test": "jest",
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "ghp": "git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.22.20",

@@ -56,10 +56,10 @@ export default function GameBoard() {
     /** Checks if the position is valid or not and then based on vertical parameter value , call the suitable function to place it */
     let PlaceShip = (row, col, ship, vertical = true) => {
         if (board[row] !== undefined && board[row][col] !== undefined) {
-            if (vertical && board[row + ship.ships.length] !== undefined) {
+            if (vertical && board[row + (ship.ships.length - 1)] !== undefined) {
                 verticalPlace(ship.ships.length, row, col, ship)
             }
-            else if (!vertical && board[row][col + ship.ships.length] !== undefined) {
+            else if (!vertical && board[row][col + (ship.ships.length - 1)] !== undefined) {
                 horizontalPlace(ship.ships.length, row, col, ship)
             }
         }
