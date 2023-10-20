@@ -6,6 +6,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .container {
@@ -42,6 +44,7 @@ main {
 }
 
 .cell {
+    transition: all 0.2s linear;
     outline: 1px solid black;
 }
 
@@ -50,7 +53,6 @@ main {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 290px;
-    height: 290px;
     display: grid;
     grid-template-rows: repeat(auto-fill, 29px);
     gap: 5px;
@@ -66,25 +68,27 @@ main {
     z-index: 2;
     cursor: move;
     transition: all 0.4s linear;
+    -webkit-user-drag: element;
+    height: 29px;
 }
 
-.moves>div:nth-child(2) {
+.s5 {
     width: 145px;
 }
 
-.moves>div:nth-child(3) {
+.s4 {
     width: 116px;
 }
 
-.moves>div:nth-child(4) {
+.s3 {
     width: 87px;
 }
 
-.moves>div:nth-child(5) {
+.s2 {
     width: 58px;
 }
 
-.moves>div:nth-child(6) {
+.s1 {
     width: 29px;
 }
 
@@ -99,7 +103,7 @@ footer {
     text-align: center;
 }
 
-.random {
+.random , .reset {
     color: rgb(255, 255, 255);
     font-size: 16px;
     line-height: 16px;
@@ -116,11 +120,11 @@ footer {
     transition: all 0.2s linear;
 }
 
-.random:hover {
+.random:hover , .reset:hover {
     background: #5D5D5D;
 }
 
-.random:active {
+.random:active , .reset:active {
     background: #373737;
 }
 
@@ -156,7 +160,7 @@ input {
     background-color: rgba(0, 0, 0, 0.2)
 }
 
-.playAgain {
+.playAgain , .confirm {
     color: rgb(255, 255, 255);
     font-size: 23px;
     line-height: 23px;
@@ -174,10 +178,10 @@ input {
     display: inline-block;
 }
 
-.playAgain:hover {
+.playAgain:hover , .confirm:hover {
     background: #A41010;
 }
 
-.playAgain:active {
+.playAgain:active , .confirm:active {
     background: #750000;
 }

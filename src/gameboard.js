@@ -116,7 +116,7 @@ export default function GameBoard() {
                 name = "Computer"
             }
             document.querySelector('.container').innerHTML = `
-            The winner is ${name} against ${enemyBoard.name}
+            ${name} won against ${enemyBoard.name}
             <div class=\"playAgain\">Play Again</div>
             `;
             document.querySelector('.playAgain').addEventListener('click' , () => {
