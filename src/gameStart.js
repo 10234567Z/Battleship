@@ -131,6 +131,7 @@ export default function makeUI() {
                         }
                         else {
                             isSafe = false;
+                            break;
                         }
                     }
                 }
