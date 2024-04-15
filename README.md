@@ -9,13 +9,13 @@ Use the Live deployed version of it [here](https://10234567z.github.io/Battleshi
 ![image](https://github.com/10234567Z/Battleship/assets/93607971/80a90d54-7f0d-4c12-a32f-4ae60a5131e4)
 
 ## Content
-* [Features](https://github.com/10234567Z/Battleship/edit/main/README.md#content)
-* [Stack Used](https://github.com/10234567Z/Battleship/edit/main/README.md#stack-used)
-* [Installation](https://github.com/10234567Z/Battleship/edit/main/README.md#installation)
-   * [Pre-Requisites](https://github.com/10234567Z/Battleship/edit/main/README.md#installation)
-   * [How to Install](https://github.com/10234567Z/Battleship/edit/main/README.md#installation)
-* [Contribute](https://github.com/10234567Z/Battleship/edit/main/README.md#contribute)
-* [License](https://github.com/10234567Z/Battleship/edit/main/README.md#license)
+* [Features](https://github.com/10234567Z/Battleship?tab=readme-ov-file#content)
+* [Stack Used](https://github.com/10234567Z/Battleship?tab=readme-ov-file#stack-used)
+* [Installation](https://github.com/10234567Z/Battleship?tab=readme-ov-file#installation)
+   * [Pre-Requisites](https://github.com/10234567Z/Battleship?tab=readme-ov-file#installation)
+   * [How to Install](https://github.com/10234567Z/Battleship?tab=readme-ov-file#installation)
+* [Contribute](https://github.com/10234567Z/Battleship?tab=readme-ov-file#contribute)
+* [License](https://github.com/10234567Z/Battleship?tab=readme-ov-file#license)
 
 ## Features
 * You choose the ships of size ranging from 1 to 5  
