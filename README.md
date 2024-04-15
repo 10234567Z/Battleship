@@ -43,7 +43,7 @@ Use the Live deployed version of it [here](https://10234567z.github.io/Battleshi
 * Open your **command line interface/Terminal** and navigate to the directory you want to install the repository.
 * Type the following commands -:  
   ```
-  git clone git@github.com:<Your github username here>/Battleship.git
+  git clone git@github.com:10234567Z/Battleship.git
   cd Battleship
   npm install
   ```
