@@ -27,12 +27,13 @@ Use the Live deployed version of it [here](https://10234567z.github.io/Battleshi
 
 ## Stack Used
 * Javascript  
-  <img src='https://github.com/10234567Z/Battleship/assets/93607971/9aebb449-9992-4bd2-863f-c35712f6ba98' alt='Javascript' width=50px height=50px />
-* CSS3  
+* CSS3
+* HTML5
+* Webpack
+  
   <img src='https://github.com/10234567Z/Battleship/assets/93607971/32d61c36-bbe7-4d5a-a965-b41f4dbc2d2c' alt='CSS3' width=50px height=50px />
-* HTML5  
   <img src='https://github.com/10234567Z/Battleship/assets/93607971/ae9af61c-e1de-4df2-8ff1-ecdaf7cf1600' alt='Javascript' width=50px height=50px />
-* Webpack  
+  <img src='https://github.com/10234567Z/Battleship/assets/93607971/9aebb449-9992-4bd2-863f-c35712f6ba98' alt='Javascript' width=50px height=50px />
   <img src='https://github.com/10234567Z/Battleship/assets/93607971/334d38dc-1865-4e42-bba8-144069ee5b08' alt='Javascript' width=50px height=50px />
 
 ## Installation
